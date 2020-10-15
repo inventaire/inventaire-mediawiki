@@ -2,3 +2,4 @@ html
 database
 .db_env
 .mw_env
+imports/old-wiki
