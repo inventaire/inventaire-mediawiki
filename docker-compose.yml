@@ -17,8 +17,8 @@ services:
   database:
     image: mariadb
     volumes:
-      - ./database:/var/lib/mysql
+      - database:/var/lib/mysql
     restart: always
-    env_file: .db_env
 volumes:
   images:
+  database:

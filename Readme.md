@@ -28,4 +28,3 @@ more details at: https://www.mediawiki.org/wiki/Manual:Language#Page_content_lan
 ### Regarding translations administration
 
 One can see current status of translated pages through the special page `Special:PageTranslation`
-
