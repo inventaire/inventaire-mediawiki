@@ -1,9 +1,6 @@
 <?php
 # Protect against web entry
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit;
-}
-
+if ( !defined( 'MEDIAWIKI' ) ) { exit; }
 
 $wgSitename = "inventaire";
 $wgMetaNamespace = "Inv";
@@ -61,6 +58,7 @@ $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
+# See https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:$wgUseInstantCommons
 $wgUseInstantCommons = false;
 
 # Periodically send a pingback to https://www.mediawiki.org/ with basic data
