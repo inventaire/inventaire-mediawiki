@@ -36,10 +36,10 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype = "mysql";
-$wgDBserver = "database:3306";
-$wgDBname = "my_wiki";
-$wgDBuser = "wikiuser";
-$wgDBpassword = "example";
+$wgDBserver = $_ENV["WGDBSERVER"];
+$wgDBname = $_ENV["WGDBNAME"];
+$wgDBuser = $_ENV["WGDBUSER"];
+$wgDBpassword = $_ENV["WGDBPASSWORD"];
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -79,7 +79,7 @@ $wgShellLocale = "C.UTF-8";
 # Site language code, should be one of the list in ./languages/data/Names.php
 $wgLanguageCode = "en";
 
-$wgSecretKey = "d56972b971942948eb60d2e9e4b2095b385e5f2e59f2ab996f58f77111e3aeb5";
+$wgSecretKey = $_ENV["WGSECRETKEY"];
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";

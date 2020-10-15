@@ -1,4 +1,5 @@
 version: '3.2'
+# Add a custom env files `.*_env` based on `dot_*_env` model
 services:
   web:
     image: mediawiki
@@ -9,15 +10,13 @@ services:
     volumes:
       - images:/var/www/html/images
       - ./LocalSettings.php:/var/www/html/LocalSettings.php
+    restart: always
+    env_file: .mw_env
   database:
     image: mariadb
-    environment:
-      MYSQL_DATABASE: 'my_wiki'
-      MYSQL_USER: 'wikiuser'
-      MYSQL_PASSWORD: 'example'
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     volumes:
       - ./database:/var/lib/mysql
     restart: always
+    env_file: .db_env
 volumes:
   images:

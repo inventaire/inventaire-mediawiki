@@ -1,0 +1,5 @@
+WGDBSERVER=host:port
+WGDBNAME=inv_wiki
+WGDBUSER=wikiuser
+WGDBPASSWORD=example
+WGSECRETKEY=64_char_hex_string
