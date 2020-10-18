@@ -113,3 +113,32 @@ wfLoadSkin( 'Vector' );
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgDebugLogFile = true;
+
+// git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector.git
+// See: https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector
+
+# Translation extensions
+$wgCCTrailerFilter = true;
+$wgCCUserFilter = false;
+$wgDefaultUserOptions['usenewrc'] = 1;
+
+$wgLocalisationUpdateDirectory = "$IP/cache";
+
+$wgGroupPermissions['user']['translate'] = true;
+$wgGroupPermissions['user']['translate-messagereview'] = true;
+$wgGroupPermissions['user']['translate-groupreview'] = true;
+$wgGroupPermissions['user']['translate-import'] = true;
+$wgGroupPermissions['user']['skipcaptcha'] = true;
+$wgGroupPermissions['sysop']['pagetranslation'] = true;
+$wgGroupPermissions['sysop']['translate-manage'] = true;
+
+// How to translate step by step guide: https://www.mediawiki.org/wiki/Help:Extension:Translate/Page_translation_example
+$wgEnablePageTranslation = true;
+$wgTranslatePageTranslationULS = false;
+
+wfLoadExtension( 'Babel' );
+wfLoadExtension( 'cldr' );
+wfLoadExtension( 'CleanChanges' );
+wfLoadExtension( 'LocalisationUpdate' );
+wfLoadExtension( 'Translate' );
+wfLoadExtension( 'UniversalLanguageSelector' );
