@@ -142,3 +142,6 @@ wfLoadExtension( 'CleanChanges' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
+
+
+wfLoadExtension( 'WikiEditor' );
