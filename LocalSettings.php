@@ -129,12 +129,14 @@ $wgGroupPermissions['user']['translate-messagereview'] = true;
 $wgGroupPermissions['user']['translate-groupreview'] = true;
 $wgGroupPermissions['user']['translate-import'] = true;
 $wgGroupPermissions['user']['skipcaptcha'] = true;
+$wgGroupPermissions['user']['pagelang'] = true;
 $wgGroupPermissions['sysop']['pagetranslation'] = true;
 $wgGroupPermissions['sysop']['translate-manage'] = true;
 
 // How to translate step by step guide: https://www.mediawiki.org/wiki/Help:Extension:Translate/Page_translation_example
 $wgEnablePageTranslation = true;
 $wgTranslatePageTranslationULS = false;
+$wgPageLanguageUseDB = true; // manually changing page language
 
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'cldr' );
@@ -142,6 +144,5 @@ wfLoadExtension( 'CleanChanges' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
-
 
 wfLoadExtension( 'WikiEditor' );
