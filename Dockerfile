@@ -31,4 +31,5 @@ RUN rm ./*.tar.gz
 
 WORKDIR /var/www/html
 
-COPY ./inv.png ./resources/assets/inv.png
+COPY ./logo.png ./resources/assets/logo.png
+COPY ./fav.ico ./resources/assets/fav.ico
