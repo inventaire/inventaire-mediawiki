@@ -134,6 +134,8 @@ $wgGroupPermissions['user']['skipcaptcha'] = true;
 $wgGroupPermissions['user']['pagelang'] = true;
 $wgGroupPermissions['sysop']['pagetranslation'] = true;
 $wgGroupPermissions['sysop']['translate-manage'] = true;
+$wgGroupPermissions['bureaucrat']['deletebatch'] = false;
+$wgGroupPermissions['sysop']['deletebatch'] = true;
 
 // How to translate step by step guide: https://www.mediawiki.org/wiki/Help:Extension:Translate/Page_translation_example
 $wgEnablePageTranslation = true;
@@ -148,3 +150,5 @@ wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
 
 wfLoadExtension( 'WikiEditor' );
+
+wfLoadExtension( 'DeleteBatch' );

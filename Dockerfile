@@ -20,12 +20,14 @@ RUN bash download-extension.sh CleanChanges
 RUN bash download-extension.sh LocalisationUpdate
 RUN bash download-extension.sh Translate
 RUN bash download-extension.sh UniversalLanguageSelector
+RUN bash download-extension.sh DeleteBatch
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
 RUN tar xzf LocalisationUpdate.tar.gz
 RUN tar xzf Translate.tar.gz
 RUN tar xzf UniversalLanguageSelector.tar.gz
+RUN tar xzf DeleteBatch.tar.gz
 
 RUN rm ./*.tar.gz
 
