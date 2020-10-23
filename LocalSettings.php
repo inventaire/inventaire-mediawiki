@@ -13,7 +13,7 @@ $wgMetaNamespace = "Inv";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://localhost:8080";
+$wgServer = "http://localhost:8888";
 // $wgServer = "https://wiki.inventaire.io";
 
 ## The URL path to static resources (images, scripts, etc.)
