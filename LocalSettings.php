@@ -112,6 +112,8 @@ wfLoadSkin( 'Vector' );
 # End of automatically generated settings.
 # Add more configuration options below.
 
+$wgAllowExternalImages = true;
+
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgDebugLogFile = true;
@@ -152,3 +154,5 @@ wfLoadExtension( 'UniversalLanguageSelector' );
 wfLoadExtension( 'WikiEditor' );
 
 wfLoadExtension( 'DeleteBatch' );
+
+wfLoadExtension( 'SyntaxHighlight_GeSHi' );
