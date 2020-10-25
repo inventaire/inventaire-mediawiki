@@ -22,6 +22,7 @@ RUN bash download-extension.sh Translate
 RUN bash download-extension.sh UniversalLanguageSelector
 RUN bash download-extension.sh DeleteBatch
 RUN bash download-extension.sh SyntaxHighlight_GeSHi
+RUN bash download-extension.sh MobileFrontend
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
@@ -30,6 +31,7 @@ RUN tar xzf Translate.tar.gz
 RUN tar xzf UniversalLanguageSelector.tar.gz
 RUN tar xzf DeleteBatch.tar.gz
 RUN tar xzf SyntaxHighlight_GeSHi.tar.gz
+RUN tar xzf MobileFrontend.tar.gz
 
 RUN rm ./*.tar.gz
 

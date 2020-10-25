@@ -156,3 +156,5 @@ wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'DeleteBatch' );
 
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
+
+wfLoadExtension( 'MobileFrontend' );
