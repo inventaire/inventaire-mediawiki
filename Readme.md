@@ -19,12 +19,16 @@ In case of database not found error, start the maintenance script update.php (fo
 
 see `Special:PageLanguage`
 
-or
-
-through the API: `api.php?action=setpagelanguage&title=Association&lang=fr&token=123ABC`
-
 more details at: https://www.mediawiki.org/wiki/Manual:Language#Page_content_language
 
 ### Regarding translations administration
 
 One can see current status of translated pages through the special page `Special:PageTranslation`
+
+## System Administration
+
+### Backups
+
+See https://docs.docker.com/storage/volumes/#backup-restore-or-migrate-data-volumes
+
+Add a cron job in `/etc/cron.daily/` to run script `archive_backup_now.sh`
