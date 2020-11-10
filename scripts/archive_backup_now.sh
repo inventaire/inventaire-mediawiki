@@ -1,6 +1,7 @@
 #!/bin/bash
 set -eu
 
+# insert absolute path as $HOME might be /root
 cd "/home/admin/inventaire-mediawiki"
 
 epoch_time="$(date +%s)"
@@ -18,7 +19,9 @@ docker run --rm -v inventaire-mediawiki_images:/backups \
   alpine \
   tar cvf "/backup/$backup_images.tar" /backups
 
-#if there are more than 20 backups (10 db + 10 images), delete backups more than 10 days old
+#if there are more than 20 backups (10 inventaire-mediawiki_database
+#and 10 inventaire-mediawiki_images), delete backups more than 10 days old
+
 files_count="$(ls -1 $(pwd)/backups | wc -l)"
 if [ "$files_count" -gt "20" ];
 then
