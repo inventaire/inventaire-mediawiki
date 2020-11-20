@@ -11,9 +11,10 @@ services:
       - "127.0.0.1:8888:80"
     volumes:
       - images:/var/www/html/images
-      - ./LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
-    env_file: .mw_env
+    env_file:
+      - .db_env
+      - .mw_env
   database:
     image: mariadb
     volumes:

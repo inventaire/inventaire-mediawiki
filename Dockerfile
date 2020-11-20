@@ -8,7 +8,10 @@ RUN apt update && \
 
 WORKDIR /var/www/html/extensions
 
+COPY LocalSettings.php /LocalSettings.php
 COPY download-extension.sh .
+COPY wait-for-it.sh /wait-for-it.sh
+COPY entrypoint.sh /entrypoint.sh
 
 # Add RUN command to each lines for development ease (instead of ending line with `;\`),
 # as it does not recreate a container (and download all extensions again) when adding new extension
@@ -41,3 +44,6 @@ RUN chmod a+x extensions/SyntaxHighlight_GeSHi/pygments/pygmentize
 
 COPY ./logo.png ./resources/assets/logo.png
 COPY ./fav.ico ./resources/assets/fav.ico
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["/entrypoint.sh"]
