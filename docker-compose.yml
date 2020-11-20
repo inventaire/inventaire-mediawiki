@@ -5,6 +5,7 @@ services:
     build:
       context: ./.
       dockerfile: Dockerfile
+    container_name: inventaire-mediawiki_web
     links:
       - database
     ports:
@@ -17,6 +18,7 @@ services:
       - .mw_env
   database:
     image: mariadb
+    container_name: inventaire-mediawiki_mariadb
     volumes:
       - database:/var/lib/mysql
     restart: always

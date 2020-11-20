@@ -25,15 +25,46 @@ One can see current status of translated pages through the special page `Special
 
 ### Manual Backups
 
-Dump pages in an xml file :
+#### Backup Docker volumes
+See https://docs.docker.com/storage/volumes/#backup-restore-or-migrate-data-volumes
 
-```
-docker exec inventaire-mediawiki_web_1 sh -c 'php /var/www/html/maintenance/dumpBackup.php --current --dbuser $WGDBUSER --dbpass $WGDBPASSWORD' > /home/admin/inventaire-mediawiki/manual-backups/wiki_backup.current.xml
+Add a cron job in `/etc/cron.daily/` to run script `archive_backup_now.sh`
+
+#### Backup MySQL
+Export db to .sql
+See https://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki/en#Mysqldump_from_the_command_line
+
+```sh
+# Set $wgReadOnly
+docker exec inventaire-mediawiki_web sh -c 'echo "\$wgReadOnly = \"Ongoing database backup, Access will be restored shortly\";" >> /var/www/html/LocalSettings.php'
+# Create database backup
+docker exec inventaire-mediawiki_mariadb sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > wikidb_dump.sql
+# Remove $wgReadOnly
+docker exec inventaire-mediawiki_web sh -c 'sed -i "/wgReadOnly/d" /var/www/html/LocalSettings.php'
 ```
 
-Export db to .sql :
-
+To restore
+```sh
+docker cp ./wikidb_dump.sql inventaire-mediawiki_mariadb:/wikidb_dump.sql
+docker exec inventaire-mediawiki_mariadb sh -c 'mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < /wikidb_dump.sql'
+docker exec inventaire-mediawiki_web sh -c 'php /var/www/html/maintenance/update.php'
 ```
-docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > manual-backups/wikidb_dump.sql
+
+#### Backup Images
+
+```sh
+docker cp inventaire-mediawiki_web:/var/www/html/images .
+tar cvf images.tar ./images
+```
+To restore
+```sh
+docker cp ./images.tar inventaire-mediawiki_web:/tmp/images.tar
+docker exec inventaire-mediawiki_web sh -c 'tar xvf /tmp/images.tar --directory /var/www/html/images'
+docker restart inventaire-mediawiki_web
 ```
 
+#### Backup wiki
+Dump pages in an xml file:
+```sh
+docker exec inventaire-mediawiki_web sh -c 'php /var/www/html/maintenance/dumpBackup.php --full --dbuser $MYSQL_USER --dbpass $MYSQL_PASSWORD' > wiki_backup.xml
+```
