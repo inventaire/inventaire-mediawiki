@@ -3,7 +3,13 @@
 if ( !defined( 'MEDIAWIKI' ) ) { exit; }
 
 $wgSitename = $_ENV["SITE_NAME"];
-$wgMetaNamespace = "Inv";
+
+$wgMetaNamespace = "Project";
+# Configured web paths & short URLs
+# This allows use of the /wiki/* path
+## https://www.mediawiki.org/wiki/Manual:Short_URL
+$wgScriptPath = "/w";        // this should already have been configured this way
+$wgArticlePath = "/wiki/$1";
 
 ## The URL base path to the directory containing the wiki;
 ## defaults for all runtime URL paths are based off of this.
