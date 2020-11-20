@@ -1,7 +1,17 @@
-WGDBSERVER=database:3306
-WGDBNAME=inv_wiki
-WGDBUSER=wikiuser
-WGDBPASSWORD=example
-WGSECRETKEY=3bb474d0ebdc185dbf20a1eae6d33dab626d3646b69226870c9d9fd0d4517a09
+MYSQL_SERVER=database:3306
+SECRET_KEY=a_random_secret_key
+
+# Some user to be created
+ADMIN_NAME=MediawikiAdmin
+# The password for the above user
+ADMIN_PASS=MediawikiDockerAdminPass
+# Email of the above user
+ADMIN_EMAIL=admin@example.com
+
+# full public host
+WG_SERVER=http://localhost:8888
 # uncomment 'MEDIAWIKI_ENABLE_SSL' to enable SSL support
 #MEDIAWIKI_ENABLE_SSL=true
+
+SITE_NAME=InventaireWiki
+SITE_LANG=en

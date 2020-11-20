@@ -2,7 +2,7 @@
 # Protect against web entry
 if ( !defined( 'MEDIAWIKI' ) ) { exit; }
 
-$wgSitename = "inventaire";
+$wgSitename = $_ENV["SITE_NAME"];
 $wgMetaNamespace = "Inv";
 
 ## The URL base path to the directory containing the wiki;
@@ -13,8 +13,7 @@ $wgMetaNamespace = "Inv";
 $wgScriptPath = "";
 
 ## The protocol and server name to use in fully-qualified URLs
-$wgServer = "http://localhost:8888";
-// $wgServer = "https://wiki.inventaire.io";
+$wgServer = $_ENV["WG_SERVER"];
 
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
@@ -38,10 +37,10 @@ $wgEmailAuthentication = true;
 
 ## Database settings
 $wgDBtype = "mysql";
-$wgDBserver = $_ENV["WGDBSERVER"];
-$wgDBname = $_ENV["WGDBNAME"];
-$wgDBuser = $_ENV["WGDBUSER"];
-$wgDBpassword = $_ENV["WGDBPASSWORD"];
+$wgDBserver = $_ENV["MYSQL_SERVER"];
+$wgDBname = $_ENV["MYSQL_DATABASE"];
+$wgDBuser = $_ENV["MYSQL_USER"];
+$wgDBpassword = $_ENV["MYSQL_PASSWORD"];
 
 # MySQL specific settings
 $wgDBprefix = "";
@@ -79,9 +78,9 @@ $wgShellLocale = "C.UTF-8";
 #$wgCacheDirectory = "$IP/cache";
 
 # Site language code, should be one of the list in ./languages/data/Names.php
-$wgLanguageCode = "en";
+$wgLanguageCode = $_ENV["SITE_LANG"];
 
-$wgSecretKey = $_ENV["WGSECRETKEY"];
+$wgSecretKey = $_ENV["SECRET_KEY"];
 
 # Changing this will log out all existing sessions.
 $wgAuthenticationTokenVersion = "1";

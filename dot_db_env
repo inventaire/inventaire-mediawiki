@@ -1,7 +1,4 @@
-# should match WGDBNAME
 MYSQL_DATABASE=inv_wiki
-# should match WGDBUSER
-MYSQL_USER=wikiuser
-# should match WGDBPASSWORD
-MYSQL_PASSWORD=example
+MYSQL_USER=wikidbuser
+MYSQL_PASSWORD=wikidbuserpass
 MYSQL_RANDOM_ROOT_PASSWORD=yes
