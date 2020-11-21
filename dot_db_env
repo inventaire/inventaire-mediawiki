@@ -1,4 +1,6 @@
+MYSQL_RANDOM_ROOT_PASSWORD=yes
+
+# Keep in sync with .mw_env
 MYSQL_DATABASE=inv_wiki
 MYSQL_USER=wikidbuser
 MYSQL_PASSWORD=wikidbuserpass
-MYSQL_RANDOM_ROOT_PASSWORD=yes

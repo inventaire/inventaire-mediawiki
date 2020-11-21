@@ -15,3 +15,8 @@ WG_SERVER=http://localhost:8888
 
 SITE_NAME=InventaireWiki
 SITE_LANG=en
+
+# Keep in sync with .db_env
+MYSQL_DATABASE=inv_wiki
+MYSQL_USER=wikidbuser
+MYSQL_PASSWORD=wikidbuserpass
