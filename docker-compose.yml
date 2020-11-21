@@ -13,9 +13,7 @@ services:
     volumes:
       - images:/var/www/html/images
     restart: always
-    env_file:
-      - .db_env
-      - .mw_env
+    env_file: .mw_env
   database:
     image: mariadb
     container_name: inventaire-mediawiki_mariadb
