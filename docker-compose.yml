@@ -11,6 +11,8 @@ services:
       - "127.0.0.1:8888:80"
     volumes:
       - images:/var/www/html/images
+      # May be uncommented after the container is first built (as entrypoint.sh first expects it to be absent)
+      # - ./LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
     env_file: .mw_env
   database:
