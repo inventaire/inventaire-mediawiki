@@ -24,9 +24,9 @@ $wgServer = $_ENV["WG_SERVER"];
 ## The URL path to static resources (images, scripts, etc.)
 $wgResourceBasePath = $wgScriptPath;
 
-## The URL paths to the logo.  Make sure you change this from the default,
-## or else you'll overwrite your logo when you upgrade!
-$wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/logo.png" ];
+## The URL paths to the logo
+// logo2.jpg = https://wiki.inventaire.io/wiki/File:Inventaire-wiki.brittanystevens-13947832357-CC-BY.4-square.2.jpg resized to 160x160
+$wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/logo2.jpg" ];
 
 $wgFavicon = "$wgResourceBasePath/resources/assets/fav.ico";
 
