@@ -40,6 +40,8 @@ RUN rm ./*.tar.gz
 
 WORKDIR /var/www/html
 
+RUN ln -s /var/www/html/ /var/www/html/w
+
 RUN chmod a+x extensions/SyntaxHighlight_GeSHi/pygments/pygmentize
 
 COPY ./logo.png ./resources/assets/logo.png
