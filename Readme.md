@@ -27,8 +27,17 @@ One can see current status of translated pages through the special page `Special
 
 ## System Administration
 
-### Backups
+### Manual Backups
 
-See https://docs.docker.com/storage/volumes/#backup-restore-or-migrate-data-volumes
+Dump pages in an xml file :
 
-Add a cron job in `/etc/cron.daily/` to run script `archive_backup_now.sh`
+```
+docker exec inventaire-mediawiki_web_1 sh -c 'php /var/www/html/maintenance/dumpBackup.php --current --dbuser $WGDBUSER --dbpass $WGDBPASSWORD' > /home/admin/inventaire-mediawiki/manual-backups/wiki_backup.current.xml
+```
+
+Export db to .sql :
+
+```
+docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > manual-backups/wikidb_dump.sql
+```
+

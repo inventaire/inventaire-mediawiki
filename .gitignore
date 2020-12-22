@@ -2,4 +2,4 @@ html
 database
 .db_env
 .mw_env
-backups
+manual_backups
