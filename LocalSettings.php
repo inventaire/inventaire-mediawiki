@@ -142,17 +142,18 @@ $wgEnablePageTranslation = true;
 $wgTranslatePageTranslationULS = false;
 $wgPageLanguageUseDB = true; // manually changing page language
 
+$wgScribuntoDefaultEngine = 'luastandalone';
+
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'cldr' );
 wfLoadExtension( 'CleanChanges' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'Translate' );
 wfLoadExtension( 'UniversalLanguageSelector' );
-
 wfLoadExtension( 'WikiEditor' );
-
 wfLoadExtension( 'DeleteBatch' );
-
 wfLoadExtension( 'SyntaxHighlight_GeSHi' );
-
 wfLoadExtension( 'MobileFrontend' );
+wfLoadExtension( 'TemplateStyles' );
+wfLoadExtension( 'CodeEditor' );
+wfLoadExtension( 'Scribunto' );

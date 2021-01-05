@@ -8,7 +8,6 @@ RUN apt update && \
 
 WORKDIR /var/www/html/extensions
 
-COPY LocalSettings.php /LocalSettings.php
 COPY download-extension.sh .
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
@@ -16,7 +15,6 @@ COPY entrypoint.sh /entrypoint.sh
 # Add RUN command to each lines for development ease (instead of ending line with `;\`),
 # as it does not recreate a container (and download all extensions again) when adding new extension
 
-RUN bash download-extension.sh UniversalLanguageSelector
 RUN bash download-extension.sh Babel
 RUN bash download-extension.sh cldr
 RUN bash download-extension.sh CleanChanges
@@ -26,6 +24,9 @@ RUN bash download-extension.sh UniversalLanguageSelector
 RUN bash download-extension.sh DeleteBatch
 RUN bash download-extension.sh SyntaxHighlight_GeSHi
 RUN bash download-extension.sh MobileFrontend
+RUN bash download-extension.sh Scribunto
+RUN bash download-extension.sh TemplateStyles
+RUN bash download-extension.sh CodeEditor
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
@@ -35,6 +36,9 @@ RUN tar xzf UniversalLanguageSelector.tar.gz
 RUN tar xzf DeleteBatch.tar.gz
 RUN tar xzf SyntaxHighlight_GeSHi.tar.gz
 RUN tar xzf MobileFrontend.tar.gz
+RUN tar xzf Scribunto.tar.gz
+RUN tar xzf TemplateStyles.tar.gz
+RUN tar xzf CodeEditor.tar.gz
 
 RUN rm ./*.tar.gz
 
@@ -46,6 +50,11 @@ RUN chmod a+x extensions/SyntaxHighlight_GeSHi/pygments/pygmentize
 
 COPY ./logo.png ./resources/assets/logo.png
 COPY ./fav.ico ./resources/assets/fav.ico
+
+# Copy LocalSettings.php last, as it's much more likely to change
+# than the rest, meaning that everytime it changes and a container is built,
+# all the following steps will have to be re-executed without cache
+COPY LocalSettings.php /LocalSettings.php
 
 ENTRYPOINT ["/bin/bash"]
 CMD ["/entrypoint.sh"]
