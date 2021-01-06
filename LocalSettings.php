@@ -142,7 +142,8 @@ $wgEnablePageTranslation = true;
 $wgTranslatePageTranslationULS = false;
 $wgPageLanguageUseDB = true; // manually changing page language
 
-$wgScribuntoDefaultEngine = 'luastandalone';
+$wgScribuntoDefaultEngine = 'luastandalone'; // See https://www.mediawiki.org/wiki/Extension:Scribunto
+$wgNamespacePreloadDoExpansion = false; // See https://www.mediawiki.org/wiki/Extension:NamespacePreload
 
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'cldr' );
@@ -157,3 +158,4 @@ wfLoadExtension( 'MobileFrontend' );
 wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'Scribunto' );
+wfLoadExtension( 'NamespacePreload' );
