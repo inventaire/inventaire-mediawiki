@@ -116,8 +116,12 @@ $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgDebugLogFile = true;
 
-// git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector.git
-// See: https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector
+// Add custom namespaces, see https://www.mediawiki.org/wiki/Manual:Using_custom_namespaces
+define("NS_NEWS", 3000);
+define("NS_NEWS_TALK", 3001);
+
+$wgExtraNamespaces[NS_NEWS] = "News";
+$wgExtraNamespaces[NS_NEWS_TALK] = "News_talk";
 
 # Translation extensions
 $wgCCTrailerFilter = true;
