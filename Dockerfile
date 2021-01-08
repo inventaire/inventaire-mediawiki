@@ -27,6 +27,7 @@ RUN bash download-extension.sh MobileFrontend
 RUN bash download-extension.sh Scribunto
 RUN bash download-extension.sh TemplateStyles
 RUN bash download-extension.sh CodeEditor
+RUN bash download-extension.sh ParserFunctions
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
@@ -39,6 +40,7 @@ RUN tar xzf MobileFrontend.tar.gz
 RUN tar xzf Scribunto.tar.gz
 RUN tar xzf TemplateStyles.tar.gz
 RUN tar xzf CodeEditor.tar.gz
+RUN tar xzf ParserFunctions.tar.gz
 
 RUN rm ./*.tar.gz
 
