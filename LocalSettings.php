@@ -157,3 +157,4 @@ wfLoadExtension( 'MobileFrontend' );
 wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'Scribunto' );
+wfLoadExtension( 'ParserFunctions' );
