@@ -28,6 +28,8 @@ RUN bash download-extension.sh Scribunto
 RUN bash download-extension.sh TemplateStyles
 RUN bash download-extension.sh CodeEditor
 RUN bash download-extension.sh ParserFunctions
+# Get a version >= 2.2 to be able to use mw.ext.externalData, see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
+RUN curl -s "https://extdist.wmflabs.org/dist/extensions/ExternalData-master-986a72f.tar.gz" -o ExternalData.tar.gz
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
@@ -41,6 +43,7 @@ RUN tar xzf Scribunto.tar.gz
 RUN tar xzf TemplateStyles.tar.gz
 RUN tar xzf CodeEditor.tar.gz
 RUN tar xzf ParserFunctions.tar.gz
+RUN tar xzf ExternalData.tar.gz
 
 RUN rm ./*.tar.gz
 

@@ -158,3 +158,4 @@ wfLoadExtension( 'TemplateStyles' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'ParserFunctions' );
+wfLoadExtension( 'ExternalData' );
