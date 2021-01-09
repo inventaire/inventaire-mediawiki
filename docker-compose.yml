@@ -15,6 +15,8 @@ services:
       # - ./LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
     env_file: .mw_env
+    depends_on:
+      - database
   database:
     # Higher version require to set MYSQL_ROOT_PASSWORD, rather than MYSQL_USER, MYSQL_PASSWORD
     # see https://hub.docker.com/_/mariadb
