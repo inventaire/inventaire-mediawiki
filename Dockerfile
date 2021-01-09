@@ -2,9 +2,9 @@ FROM mediawiki:1.35
 
 # extension install inspired from https://github.com/wmde/wikibase-docker/blob/master/wikibase/1.35/bundle/Dockerfile
 
-RUN apt update && \
-    apt install --yes --no-install-recommends jq=1.* curl=7.* && \
-    apt clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install --yes --no-install-recommends jq=1.* curl=7.* && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html/extensions
 
