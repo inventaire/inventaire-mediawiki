@@ -50,17 +50,14 @@ docker exec inventaire-mediawiki_database_1 sh -c 'mysql -u$MYSQL_USER -p$MYSQL_
 docker exec inventaire-mediawiki_web_1 sh -c 'php /var/www/html/maintenance/update.php'
 ```
 
-#### Backup Images
-
+#### Backup images
 ```sh
-docker cp inventaire-mediawiki_web_1:/var/www/html/images .
-tar cvf images.tar ./images
+tar -zcf images.tar.gz ./images/
 ```
 To restore
 ```sh
-docker cp ./images.tar inventaire-mediawiki_web_1:/tmp/images.tar
-docker exec inventaire-mediawiki_web_1 sh -c 'tar xvf /tmp/images.tar --directory /var/www/html/images'
-docker restart inventaire-mediawiki_web_1
+# Will recreate the image folder that is then mounted as volume by in docker-compose.yml
+tar xzf images.tar.gz
 ```
 
 #### Backup wiki

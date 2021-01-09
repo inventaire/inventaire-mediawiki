@@ -10,7 +10,7 @@ services:
     ports:
       - "127.0.0.1:8888:80"
     volumes:
-      - images:/var/www/html/images
+      - ./images:/var/www/html/images
       # May be uncommented after the container is first built (as entrypoint.sh first expects it to be absent)
       # - ./LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
@@ -24,5 +24,4 @@ services:
     restart: always
     env_file: .db_env
 volumes:
-  images:
   database:
