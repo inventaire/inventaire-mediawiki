@@ -4,6 +4,7 @@ Based on manual https://www.mediawiki.org/wiki/Docker/Hub but with repository ur
 
 ## Installation
 ### Quick start
+ - in `docker-compose.yml`, comment out `LocalSettings.php` volume line (so that `entrypoint.sh` knows it has to run the installation steps)
  - `cp dot_mw_env .mw_env && cp dot_db_env .db_env`
  - Start compose `docker-compose up`
 
