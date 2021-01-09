@@ -18,8 +18,7 @@ $wgServer = $_ENV["WG_SERVER"];
 $wgResourceBasePath = $wgScriptPath;
 
 ## The URL paths to the logo
-// logo2.jpg = https://wiki.inventaire.io/wiki/File:Inventaire-wiki.brittanystevens-13947832357-CC-BY.4-square.2.jpg resized to 160x160
-$wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/logo2.jpg" ];
+$wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/logo.jpg" ];
 
 $wgFavicon = "$wgResourceBasePath/resources/assets/fav.ico";
 

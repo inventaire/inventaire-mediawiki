@@ -53,8 +53,7 @@ RUN ln -s /var/www/html/ /var/www/html/w
 
 RUN chmod a+x extensions/SyntaxHighlight_GeSHi/pygments/pygmentize
 
-COPY ./logo.png ./resources/assets/logo.png
-COPY ./fav.ico ./resources/assets/fav.ico
+COPY ./assets ./resources/assets
 
 # Copy LocalSettings.php last, as it's much more likely to change
 # than the rest, meaning that everytime it changes and a container is built,
