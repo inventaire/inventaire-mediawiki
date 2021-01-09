@@ -3,4 +3,5 @@ database
 .db_env
 .mw_env
 manual_backups
+backups
 images

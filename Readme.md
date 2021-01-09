@@ -23,37 +23,42 @@ One can see current status of translated pages through the special page `Special
 
 ## System Administration
 
-### Manual Backups
-
-#### Backup Docker volumes
-See https://docs.docker.com/storage/volumes/#backup-restore-or-migrate-data-volumes
-
-Add a cron job in `/etc/cron.daily/` to run script `archive_backup_now.sh`
-
+### Backups
 #### Backup MySQL
 Export db to .sql
-See https://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki/en#Mysqldump_from_the_command_line
 
 ```sh
-# Set $wgReadOnly
-docker exec inventaire-mediawiki_web_1 sh -c 'echo "\$wgReadOnly = \"Ongoing database backup, Access will be restored shortly\";" >> /var/www/html/LocalSettings.php'
-# Create database backup
-docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > wikidb_dump.sql
-# Remove $wgReadOnly
-docker exec inventaire-mediawiki_web_1 sh -c 'sed -i "/wgReadOnly/d" /var/www/html/LocalSettings.php'
+./scripts/backup_sql_db.sh
+```
+
+To run it daily, to you a cron job in `/etc/cron.daily/` that could look like this:
+```sh
+#!/usr/bin/env sh
+/home/admin/inventaire-mediawiki/scripts/backup_sql_db.sh /home/admin/inventaire-mediawiki > /home/admin/inventaire-mediawiki/backups/logs 2>&1
 ```
 
 To restore
 ```sh
+# Requires to have the 'database' service up
 docker cp ./wikidb_dump.sql inventaire-mediawiki_database_1:/wikidb_dump.sql
 docker exec inventaire-mediawiki_database_1 sh -c 'mysql -u$MYSQL_USER -p$MYSQL_PASSWORD < /wikidb_dump.sql'
+# Requires to have the 'web' service up
 docker exec inventaire-mediawiki_web_1 sh -c 'php /var/www/html/maintenance/update.php'
 ```
 
 #### Backup images
+As the `images` volume is mounted from `./images`, the easiest way to backup images is to `rsync` that folder from where you want to keep the backup:
+```
+mkdir -p ./backups/images
+rsync -ahz server_name:~/inventaire-mediawiki/images/ ./backups/images
+```
+
+Alternatively, you could also create an archive file:
+
 ```sh
 tar -zcf images.tar.gz ./images/
 ```
+
 To restore
 ```sh
 # Will recreate the image folder that is then mounted as volume by in docker-compose.yml
@@ -65,3 +70,5 @@ Dump pages in an xml file:
 ```sh
 docker exec inventaire-mediawiki_web_1 sh -c 'php /var/www/html/maintenance/dumpBackup.php --full --dbuser $MYSQL_USER --dbpass $MYSQL_PASSWORD' > wiki_backup.xml
 ```
+
+If you are already running MySQL backup, this would be redundant, but it can sometimes be useful to access this kind of backup as it's easier to manipulate as text (ex: to run `grep` on it)
