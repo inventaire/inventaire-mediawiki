@@ -1,4 +1,4 @@
-FROM mediawiki
+FROM mediawiki:1.35
 
 # extension install inspired from https://github.com/wmde/wikibase-docker/blob/master/wikibase/1.35/bundle/Dockerfile
 
