@@ -115,6 +115,9 @@ $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
 $wgDebugLogFile = true;
 
+// See: https://www.mediawiki.org/wiki/Extension:SendGrid
+$wgSendGridAPIKey = $_ENV["WG_SENDGRD_API_KEY"];
+
 // git clone https://gerrit.wikimedia.org/r/mediawiki/extensions/UniversalLanguageSelector.git
 // See: https://www.mediawiki.org/wiki/Extension:UniversalLanguageSelector
 
@@ -158,3 +161,4 @@ wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'ExternalData' );
+wfLoadExtension( 'SendGrid' );

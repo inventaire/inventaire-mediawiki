@@ -20,3 +20,6 @@ SITE_LANG=en
 MYSQL_DATABASE=inv_wiki
 MYSQL_USER=wikidbuser
 MYSQL_PASSWORD=wikidbuserpass
+
+# Sendgrid extension configuration
+WG_SENDGRD_API_KEY=yoursendgridapikey
