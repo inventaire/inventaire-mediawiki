@@ -29,8 +29,9 @@ RUN bash download-extension.sh TemplateStyles
 RUN bash download-extension.sh CodeEditor
 RUN bash download-extension.sh ParserFunctions
 RUN bash download-extension.sh SendGrid
-# Get a version >= 2.2 to be able to use mw.ext.externalData, see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
-RUN curl -s "https://extdist.wmflabs.org/dist/extensions/ExternalData-master-986a72f.tar.gz" -o ExternalData.tar.gz
+# Set version=master to get >= 2.2 to be able to use mw.ext.externalData,
+# see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
+RUN bash download-extension.sh ExternalData master
 RUN tar xzf Babel.tar.gz
 RUN tar xzf cldr.tar.gz
 RUN tar xzf CleanChanges.tar.gz
