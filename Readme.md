@@ -39,6 +39,11 @@ To run it daily, to you a cron job in `/etc/cron.daily/` that could look like th
 /home/admin/inventaire-mediawiki/scripts/backup_sql_db.sh /home/admin/inventaire-mediawiki > /home/admin/inventaire-mediawiki/backups/logs 2>&1
 ```
 
+Make sure to turn that file into an executable:
+```sh
+sudo chmod +x /etc/cron.daily/backup_mediawiki
+```
+
 To restore
 ```sh
 # Requires to have the 'database' service up
