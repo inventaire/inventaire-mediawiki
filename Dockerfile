@@ -32,23 +32,8 @@ RUN bash download-extension.sh SendGrid
 # Set version=master to get >= 2.2 to be able to use mw.ext.externalData,
 # see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
 RUN bash download-extension.sh ExternalData master
-RUN tar xzf Babel.tar.gz
-RUN tar xzf cldr.tar.gz
-RUN tar xzf CleanChanges.tar.gz
-RUN tar xzf LocalisationUpdate.tar.gz
-RUN tar xzf Translate.tar.gz
-RUN tar xzf UniversalLanguageSelector.tar.gz
-RUN tar xzf DeleteBatch.tar.gz
-RUN tar xzf SyntaxHighlight_GeSHi.tar.gz
-RUN tar xzf MobileFrontend.tar.gz
-RUN tar xzf Scribunto.tar.gz
-RUN tar xzf TemplateStyles.tar.gz
-RUN tar xzf CodeEditor.tar.gz
-RUN tar xzf ParserFunctions.tar.gz
-RUN tar xzf ExternalData.tar.gz
-RUN tar xzf SendGrid.tar.gz
 
-RUN rm ./*.tar.gz
+RUN for archive_file in *.tar.gz; do tar xzf "$archive_file"; done && rm ./*.tar.gz
 
 WORKDIR /var/www/html
 
