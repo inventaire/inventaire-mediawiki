@@ -14,14 +14,14 @@ rm -f "${project_root}/backups/latest"
 ln -s "$backup_folder" "${project_root}/backups/latest"
 
 # Set $wgReadOnly
-docker exec inventaire-mediawiki_web_1 sh -c 'echo "\$wgReadOnly = \"Ongoing database backup, Access will be restored shortly\";" >> /var/www/html/LocalSettings.php'
+echo "\$wgReadOnly = \"Ongoing database backup, Access will be restored shortly\";" >> "${project_root}/LocalSettings.php"
 
 # Create database backup
 # See https://www.mediawiki.org/wiki/Manual:Backing_up_a_wiki/en#Mysqldump_from_the_command_line
 docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > "${backup_folder}/wikidb_dump.sql"
 
 # Remove $wgReadOnly
-docker exec inventaire-mediawiki_web_1 sh -c 'sed -i "/wgReadOnly/d" /var/www/html/LocalSettings.php'
+sed -i "/wgReadOnly/d" "${project_root}/LocalSettings.php"
 
 # Cleanup old backups:
 ## Delete backups more than 10 days old, unless they are from the first of the month
