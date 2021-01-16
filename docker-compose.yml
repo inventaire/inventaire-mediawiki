@@ -11,6 +11,7 @@ services:
       - "127.0.0.1:8888:80"
     volumes:
       - ./images:/var/www/html/images
+      - ./assets:/var/www/html/resources/assets
       # May be commented-out for the first container build (as entrypoint.sh first expects it to be absent)
       - ./LocalSettings.php:/var/www/html/LocalSettings.php
     restart: always
