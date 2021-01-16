@@ -20,7 +20,7 @@ $wgResourceBasePath = $wgScriptPath;
 ## The URL paths to the logo
 $wgLogos = [ '1x' => "$wgResourceBasePath/resources/assets/logo.jpg" ];
 
-$wgFavicon = "$wgResourceBasePath/resources/assets/fav.ico";
+$wgFavicon = "$wgResourceBasePath/resources/assets/favicon.ico";
 
 ## UPO means: this is also a user preference option
 
