@@ -23,3 +23,7 @@ MYSQL_PASSWORD=wikidbuserpass
 
 # Sendgrid extension configuration
 WG_SENDGRD_API_KEY=yoursendgridapikey
+
+INV_HOST=https://inventaire.io
+OAUTH_CLIENT_ID=some_client_id_delivered_by_inventaire_server_admins
+OAUTH_CLIENT_SECRECT=the_associated_secret_also_delivered_by_inventaire_server_admins

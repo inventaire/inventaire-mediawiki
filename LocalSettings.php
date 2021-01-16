@@ -148,6 +148,28 @@ $wgPageLanguageUseDB = true; // manually changing page language
 
 $wgScribuntoDefaultEngine = 'luastandalone';
 
+$invHost = $_ENV['INV_HOST'];
+
+$wgOAuth2Client['client']['id']     = $_ENV['OAUTH_CLIENT_ID']; // The client ID assigned to you by the provider
+$wgOAuth2Client['client']['secret'] = $_ENV['OAUTH_CLIENT_SECRET']; // The client secret assigned to you by the provider
+
+$wgOAuth2Client['configuration']['authorize_endpoint']     = "$invHost/authorize";
+$wgOAuth2Client['configuration']['access_token_endpoint']  = "$invHost/api/oauth/token";
+$wgOAuth2Client['configuration']['api_endpoint']           = "$invHost/api/user";
+$wgOAuth2Client['configuration']['redirect_uri']           = "$wgServer/wiki/Special:OAuth2Client/callback";
+
+// Using the stableUsername as it will then be used as the user identifier by mediawiki
+// To change a user username, you would thus need to simultaneously rename the mediawiki user
+// (using the not yet installed https://www.mediawiki.org/wiki/Extension:Renameuser)
+// and update their 'stableUsername' in the Inventaire user database
+$wgOAuth2Client['configuration']['username'] = 'stableUsername'; // JSON path to stableUsername in the api_endpoint response
+$wgOAuth2Client['configuration']['email'] = 'email'; // JSON path to email in the api_endpoint response
+
+$wgOAuth2Client['configuration']['scopes'] = 'stable-username email';
+
+$wgOAuth2Client['configuration']['service_name'] = $wgSitename;
+$wgOAuth2Client['configuration']['service_login_link_text'] = "Login with Inventaire";
+
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'cldr' );
@@ -157,6 +179,7 @@ wfLoadExtension( 'DeleteBatch' );
 wfLoadExtension( 'ExternalData' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MobileFrontend' );
+wfLoadExtension( 'MW-OAuth2Client' );
 wfLoadExtension( 'ParserFunctions' );
 wfLoadExtension( 'Scribunto' );
 wfLoadExtension( 'SendGrid' );
