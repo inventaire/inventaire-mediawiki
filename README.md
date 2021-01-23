@@ -36,7 +36,7 @@ Export db to .sql
 To run it daily, to you a cron job in `/etc/cron.daily/` that could look like this:
 ```sh
 #!/usr/bin/env sh
-/home/admin/inventaire-mediawiki/scripts/backup_sql_db.sh /home/admin/inventaire-mediawiki > /home/admin/inventaire-mediawiki/backups/logs 2>&1
+/home/admin/inventaire-mediawiki/scripts/backup_sql_db.sh /home/admin/inventaire-mediawiki >> /home/admin/inventaire-mediawiki/backups/logs 2>&1
 ```
 
 Make sure to turn that file into an executable:
