@@ -35,6 +35,8 @@ RUN bash download-extension.sh ExternalData master
 
 RUN for archive_file in *.tar.gz; do tar xzf "$archive_file"; done && rm ./*.tar.gz
 
+RUN mkdir -p /tmp/mediawiki && chown -R www-data:www-data /tmp/mediawiki
+
 WORKDIR /var/www/html
 
 RUN ln -s /var/www/html/ /var/www/html/w

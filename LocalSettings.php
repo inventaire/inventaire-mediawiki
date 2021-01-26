@@ -55,6 +55,8 @@ $wgMemCachedServers = [];
 $wgEnableUploads = true;
 $wgUseImageMagick = true;
 $wgImageMagickConvertCommand = "/usr/bin/convert";
+// Tmp directory should be owned by www-data user
+$wgTmpDirectory = '/tmp/mediawiki';
 
 # InstantCommons allows wiki to use images from https://commons.wikimedia.org
 # See https://www.mediawiki.org/wiki/Special:MyLanguage/Manual:$wgUseInstantCommons
