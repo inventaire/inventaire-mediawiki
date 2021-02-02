@@ -1,5 +1,5 @@
 version: '3.2'
-# Add a custom env files `.*_env` based on `dot_*_env` model
+# Add custom env files `.*_env` based on `dot_*_env` model
 services:
   web:
     build:

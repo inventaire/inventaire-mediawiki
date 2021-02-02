@@ -21,7 +21,8 @@ echo "\$wgReadOnly = \"Ongoing database backup, Access will be restored shortly\
 docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$MYSQL_USER -p$MYSQL_PASSWORD --default-character-set=binary' > "${backup_folder}/wikidb_dump.sql"
 
 # Remove $wgReadOnly
-sed -i "/wgReadOnly/d" "${project_root}/LocalSettings.php"
+# cp instead of sed -i in order to not change file inode from within docker container
+docker exec inventaire-mediawiki_web_1 sh -c 'sed "/wgReadOnly/d" "/var/www/html/LocalSettings.php" > "/tmp/.tmp-localsettings"; cp "/tmp/.tmp-localsettings" "/var/www/html/LocalSettings.php"'
 
 # Cleanup old backups:
 ## Delete backups more than 10 days old, unless they are from the first of the month
