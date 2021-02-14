@@ -18,20 +18,20 @@ COPY entrypoint.sh /entrypoint.sh
 RUN bash download-extension.sh Babel
 RUN bash download-extension.sh cldr
 RUN bash download-extension.sh CleanChanges
-RUN bash download-extension.sh LocalisationUpdate
-RUN bash download-extension.sh Translate
-RUN bash download-extension.sh UniversalLanguageSelector
-RUN bash download-extension.sh DeleteBatch
-RUN bash download-extension.sh SyntaxHighlight_GeSHi
-RUN bash download-extension.sh MobileFrontend
-RUN bash download-extension.sh Scribunto
-RUN bash download-extension.sh TemplateStyles
 RUN bash download-extension.sh CodeEditor
-RUN bash download-extension.sh ParserFunctions
-RUN bash download-extension.sh SendGrid
+RUN bash download-extension.sh DeleteBatch
 # Set version=master to get >= 2.2 to be able to use mw.ext.externalData,
 # see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
 RUN bash download-extension.sh ExternalData master
+RUN bash download-extension.sh LocalisationUpdate
+RUN bash download-extension.sh MobileFrontend
+RUN bash download-extension.sh ParserFunctions
+RUN bash download-extension.sh Scribunto
+RUN bash download-extension.sh SendGrid
+RUN bash download-extension.sh SyntaxHighlight_GeSHi
+RUN bash download-extension.sh TemplateStyles
+RUN bash download-extension.sh Translate
+RUN bash download-extension.sh UniversalLanguageSelector
 
 RUN for archive_file in *.tar.gz; do tar xzf "$archive_file"; done && rm ./*.tar.gz
 
