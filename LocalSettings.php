@@ -149,6 +149,7 @@ $wgPageLanguageUseDB = true; // manually changing page language
 $wgScribuntoDefaultEngine = 'luastandalone';
 
 wfLoadExtension( 'Babel' );
+wfLoadExtension( 'Cite' );
 wfLoadExtension( 'cldr' );
 wfLoadExtension( 'CleanChanges' );
 wfLoadExtension( 'CodeEditor' );

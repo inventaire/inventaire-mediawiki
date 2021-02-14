@@ -16,6 +16,7 @@ COPY entrypoint.sh /entrypoint.sh
 # as it does not recreate a container (and download all extensions again) when adding new extension
 
 RUN bash download-extension.sh Babel
+RUN bash download-extension.sh Cite
 RUN bash download-extension.sh cldr
 RUN bash download-extension.sh CleanChanges
 RUN bash download-extension.sh CodeEditor
