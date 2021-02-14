@@ -9,6 +9,7 @@ RUN apt-get update && \
 WORKDIR /var/www/html/extensions
 
 COPY download-extension.sh .
+COPY download-extension-OAuth2Client.sh .
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
 
@@ -36,16 +37,9 @@ RUN bash download-extension.sh UniversalLanguageSelector
 
 RUN for archive_file in *.tar.gz; do tar xzf "$archive_file"; done && rm ./*.tar.gz
 
+RUN bash download-extension-OAuth2Client.sh
+
 RUN mkdir -p /tmp/mediawiki && chown -R www-data:www-data /tmp/mediawiki
-
-WORKDIR /root
-# Installing PHP Composer
-# See https://getcomposer.org/doc/faqs/how-to-install-composer-programmatically.md
-RUN curl -s https://raw.githubusercontent.com/composer/getcomposer.org/459bcaa/web/installer | php -- --quiet && ln -s /root/composer.phar /usr/bin/composer
-
-WORKDIR /var/www/html/extensions
-# Following installation steps from https://www.mediawiki.org/wiki/Extension:OAuth2_Client
-RUN git clone https://github.com/Schine/MW-OAuth2Client.git 2>&1 && cd MW-OAuth2Client && git submodule update --init 2>&1 && cd vendors/oauth2-client && composer install 2>&1
 
 WORKDIR /var/www/html
 
