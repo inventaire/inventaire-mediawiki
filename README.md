@@ -6,7 +6,7 @@ Based on manual https://www.mediawiki.org/wiki/Docker/Hub but with repository ur
 ### Quick start
  - Create a directory for images and set permissions to what will be the `www-data` user (`33`) inside the container: `mkdir ./images && sudo chown 33:33 ./images`
  - in `docker-compose.yml`, comment out `LocalSettings.php` volume line (so that `entrypoint.sh` knows it has to run the installation steps)
- - `cp dot_mw_env .mw_env && cp dot_db_env .db_env`
+ - `cp dot_mw_env .mw_env && cp dot_db_env .db_env && chmod 600 .*env`
  - Start compose `docker-compose up`
 
 In case of database not found error, start the maintenance script update.php (for example with `docker exec -it container_name php /var/www/html/maintenance/update.php`)
