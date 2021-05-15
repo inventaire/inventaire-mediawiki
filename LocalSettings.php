@@ -150,6 +150,15 @@ $wgScribuntoDefaultEngine = 'luastandalone';
 
 $invHost = $_ENV['INV_HOST'];
 
+// Remove login links from all pages
+// https://www.mediawiki.org/wiki/Manual:Preventing_access#Removing_the_Login_link_from_all_pages
+function NoLoginLinkOnMainPage( &$personal_urls ){
+    unset( $personal_urls['login'] );
+    unset( $personal_urls['anonlogin'] );
+    return true;
+}
+$wgHooks['PersonalUrls'][]='NoLoginLinkOnMainPage';
+
 $wgOAuth2Client['client']['id']     = $_ENV['OAUTH_CLIENT_ID']; // The client ID assigned to you by the provider
 $wgOAuth2Client['client']['secret'] = $_ENV['OAUTH_CLIENT_SECRET']; // The client secret assigned to you by the provider
 
