@@ -3,12 +3,13 @@ FROM mediawiki:1.35
 # extension install inspired from https://github.com/wmde/wikibase-docker/blob/master/wikibase/1.35/bundle/Dockerfile
 
 RUN apt-get update && \
-    apt-get install --yes --no-install-recommends jq=1.* curl=7.* && \
+    apt-get install --yes --no-install-recommends jq=1.* curl=7.* unzip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html/extensions
 
 COPY download-extension.sh .
+COPY download-extension-OAuth2Client.sh .
 COPY wait-for-it.sh /wait-for-it.sh
 COPY entrypoint.sh /entrypoint.sh
 
@@ -35,6 +36,8 @@ RUN bash download-extension.sh Translate
 RUN bash download-extension.sh UniversalLanguageSelector
 
 RUN for archive_file in *.tar.gz; do tar xzf "$archive_file"; done && rm ./*.tar.gz
+
+RUN bash download-extension-OAuth2Client.sh
 
 RUN mkdir -p /tmp/mediawiki && chown -R www-data:www-data /tmp/mediawiki
 

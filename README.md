@@ -5,9 +5,10 @@ Based on manual https://www.mediawiki.org/wiki/Docker/Hub but with repository ur
 ## Installation
 ### Quick start
  - Create a directory for images and set permissions to what will be the `www-data` user (`33`) inside the container: `mkdir ./images && sudo chown 33:33 ./images`
- - in `docker-compose.yml`, comment out `LocalSettings.php` volume line (so that `entrypoint.sh` knows it has to run the installation steps)
+ - /!\ Do not skip that step /!\ in `docker-compose.yml`, comment out `LocalSettings.php` volume line (so that `entrypoint.sh` knows it has to run the installation steps)
  - `cp dot_mw_env .mw_env && cp dot_db_env .db_env && chmod 600 .*env`
  - Start compose `docker-compose up`
+ - Once started corectly, you may re-comment `LocalSettings.php` volume line
 
 In case of database not found error, start the maintenance script update.php (for example with `docker exec -it container_name php /var/www/html/maintenance/update.php`)
 
@@ -22,6 +23,10 @@ more details at: https://www.mediawiki.org/wiki/Manual:Language#Page_content_lan
 ### Regarding translations administration
 
 One can see current status of translated pages through the special page `Special:PageTranslation`
+
+## Extensions
+
+Install new extensions by updating the Dockerfile, then `docker-compose up --build`.
 
 ## System Administration
 
