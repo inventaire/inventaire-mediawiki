@@ -115,7 +115,7 @@ $wgAllowExternalImages = true;
 
 $wgGroupPermissions['*']['edit'] = false;
 $wgGroupPermissions['*']['createaccount'] = false;
-$wgDebugLogFile = true;
+$wgDebugLogFile = "/var/log/mediawiki.log";
 
 // See: https://www.mediawiki.org/wiki/Extension:SendGrid
 $wgSendGridAPIKey = $_ENV["WG_SENDGRD_API_KEY"];
