@@ -179,6 +179,8 @@ $wgOAuth2Client['configuration']['scopes'] = 'stable-username email';
 $wgOAuth2Client['configuration']['service_name'] = $wgSitename;
 $wgOAuth2Client['configuration']['service_login_link_text'] = "Login with Inventaire";
 
+$wgGroupPermissions['sysop']['interwiki'] = true;
+
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'cldr' );
@@ -186,6 +188,7 @@ wfLoadExtension( 'CleanChanges' );
 wfLoadExtension( 'CodeEditor' );
 wfLoadExtension( 'DeleteBatch' );
 wfLoadExtension( 'ExternalData' );
+wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'LocalisationUpdate' );
 wfLoadExtension( 'MobileFrontend' );
 wfLoadExtension( 'MW-OAuth2Client' );

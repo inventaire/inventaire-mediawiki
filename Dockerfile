@@ -25,6 +25,7 @@ RUN bash download-extension.sh DeleteBatch
 # Set version=master to get >= 2.2 to be able to use mw.ext.externalData,
 # see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
 RUN bash download-extension.sh ExternalData master
+RUN bash download-extension.sh Interwiki
 RUN bash download-extension.sh LocalisationUpdate
 RUN bash download-extension.sh MobileFrontend
 RUN bash download-extension.sh ParserFunctions
