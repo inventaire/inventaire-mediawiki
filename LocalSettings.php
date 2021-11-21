@@ -179,6 +179,8 @@ $wgOAuth2Client['configuration']['scopes'] = 'stable-username email';
 $wgOAuth2Client['configuration']['service_name'] = $wgSitename;
 $wgOAuth2Client['configuration']['service_login_link_text'] = "Login with Inventaire";
 
+$wgCookieSecure = true;
+
 wfLoadExtension( 'Babel' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'cldr' );
