@@ -22,8 +22,10 @@ RUN bash download-extension.sh cldr
 RUN bash download-extension.sh CleanChanges
 RUN bash download-extension.sh CodeEditor
 RUN bash download-extension.sh DeleteBatch
-# Set version=master to get >= 2.2 to be able to use mw.ext.externalData,
-# see https://www.mediawiki.org/wiki/Extension:External_Data#Scribunto/Lua
+# Set version=master to get >= 3.0 to be able to use mw.ext.externaldata.getExternalData,
+# see https://www.mediawiki.org/wiki/Extension:External_Data/Lua
+# Should ideally be normalized in the future to use the recommanded version, instead of
+# following master, to prevent breaking changes
 RUN bash download-extension.sh ExternalData master
 RUN bash download-extension.sh LocalisationUpdate
 RUN bash download-extension.sh MobileFrontend
