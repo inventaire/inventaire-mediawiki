@@ -27,7 +27,7 @@ docker exec inventaire-mediawiki_database_1 sh -c 'mysqldump --all-databases -u$
 docker exec inventaire-mediawiki_web_1 sh -c 'sed "/wgReadOnly/d" "/var/www/html/LocalSettings.php" > "/tmp/.tmp-localsettings"; cp "/tmp/.tmp-localsettings" "/var/www/html/LocalSettings.php"'
 
 # Cleanup old backups:
-## Delete backups more than 10 days old, unless they are from the first of the month
-find "$backups_folder" -mindepth 1 -type d -mtime +10 -not -regex ".*01$" -exec rm -rf {} \;
+## Delete backups more than 3 days old, unless they are from the first of the month
+find "$backups_folder" -mindepth 1 -type d -mtime +3 -not -regex ".*01$" -exec rm -rf {} \;
 ## Delete backups from the first of each months once passed 6 months
 find "$backups_folder" -mindepth 1 -type d -mtime +180 -exec rm -rf {} \;
